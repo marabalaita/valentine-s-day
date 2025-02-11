@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Anca Buhăceanu">
+    <meta name="description" content="Site Valentines Day">
+    <title>Klaus</title>
+
+<style>
+    body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+            flex-direction: column;
+            text-align: center;
+            background-color: rgb(234, 195, 109);
+        }
+        h2 {
+            font-size: 60px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            font-size: 60px;
+            padding: 30px 60px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 100%;
+        }
+        #da {
+            background-color: green;
+            color: white;
+        }
+        #nu {
+            background-color: red;
+            color: white;
+            position: relative;
+        }
+        #nu-text, #da-text {
+            margin-top: 10px;
+            font-size: 18px;
+            text-align: center;
+            font-size: 25px;
+        }
+        #nu-text {
+            color: red;
+        }
+        #da-text {
+            color: rgb(234, 195, 109);
+        }
+    
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: row;
+                justify-content: center;
+            }
+            button {
+                width: auto;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Do you wanna be my date for Valentine’s?</h2>
+    <div class="container">
+        <div class="button-container">
+            <button id="da" onclick="location.href='https://open.spotify.com/track/410rGaFDJPwjsr9m9RPCkz?si=05813524d5f648dc&nd=1&dlsi=b134f0f044714ad3'">YES</button>
+            <div id="da-text">Apasă pentru a continua</div>
+        </div>
+        <div class="button-container">
+            <button id="nu">NO</button>
+            <div id="nu-text">Don’t you dare to press no🔫</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("nu").addEventListener("click", function() {
+            let daButton = document.getElementById("da");
+            let nuButton = document.getElementById("nu");
+            let currentSizeDa = window.getComputedStyle(daButton).fontSize;
+            let newSizeDa = parseFloat(currentSizeDa) * 1.2 + "px";
+            daButton.style.fontSize = newSizeDa;
+            daButton.style.padding = parseFloat(daButton.style.padding || 30) * 1.2 + "px";
+
+            let currentSizeNu = window.getComputedStyle(nuButton).fontSize;
+            let newSizeNu = parseFloat(currentSizeNu) * 0.8 + "px";
+            nuButton.style.fontSize = newSizeNu;
+            nuButton.style.padding = parseFloat(nuButton.style.padding || 30) * 0.8 + "px";
+
+            if (parseFloat(newSizeNu) < 2) {
+                nuButton.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
